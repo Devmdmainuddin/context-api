@@ -21,6 +21,9 @@ const handleAddToWishlist =()=>{
         setcart((previousCart) => [...previousCart,idInt])
     }
 }
+
+
+
 const product=products.find(product=>product.id === parseInt(id))
 if (!product) {
     return <div>Product not found</div>;

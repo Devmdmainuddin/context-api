@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-	const { createUser } = useContext(AuthContext)
+	const { createUser,setloader } = useContext(AuthContext)
 	const [Error,setError]= useState('')
 	const [emailError,setEmailError]=useState('')
 
@@ -59,6 +59,7 @@ const Signup = () => {
 				
 			})
 			.catch(error => {
+				setloader(false)
 				toast.error(error.message)
 				console.log( error.message.split('/')[1])
 				

@@ -42,7 +42,7 @@ useEffect(()=>{
   },[])
 
 
-const authinfo = {user,loader,createUser,signInUser,resetpassword,logOut}
+const authinfo = {user,loader,setloader,createUser,signInUser,resetpassword,logOut}
     return (
         <AuthContext.Provider value={authinfo}>
             {children}

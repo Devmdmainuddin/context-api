@@ -14,7 +14,7 @@ const Login = () => {
 	const emailRaf = useRef(null)
 	const [showpassword, setshowpassword] = useState(false)
 	const navigate = useNavigate();
-	const { signInUser, resetpassword } = useContext(AuthContext)
+	const { signInUser, resetpassword ,setloader} = useContext(AuthContext)
 	const handlelogin = e => {
 		e.preventDefault();
 
@@ -29,6 +29,7 @@ const Login = () => {
 				navigate('/')
 			})
 			.catch(error => {
+				setloader(false)
 				toast.error(error.message)
 				console.log('error', error.message)
 			})
