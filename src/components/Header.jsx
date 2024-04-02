@@ -8,7 +8,7 @@ import { ProductComponents } from "../Contaxt/ContextComponent";
 
 const Header = () => {
   const { user ,logOut} = useContext(AuthContext)
-  const {cart,setcart}=useContext(ProductComponents)
+  const {items,setcart}=useContext(ProductComponents)
 
 
 
@@ -58,7 +58,7 @@ const Header = () => {
               </>
 
             }
-            <li className="bg-green-300 p-2 rounded-sm"><Link to='/cart' > {cart.length} <FiShoppingCart></FiShoppingCart></Link> </li>
+            <li className="bg-green-300 p-2 rounded-sm"><Link to='/cart' > {items.length} <FiShoppingCart></FiShoppingCart></Link> </li>
           </ul>
         </div>
       </div>

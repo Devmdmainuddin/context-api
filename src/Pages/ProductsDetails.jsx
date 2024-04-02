@@ -1,28 +1,14 @@
 import { useContext } from "react";
 import { ProductComponents } from "../Contaxt/ContextComponent";
 import { useParams } from "react-router-dom";
-import { saveStoreData } from "../DataBase/FakeDataBase";
+// import { saveStoreData } from "../DataBase/FakeDataBase";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ProductsDetails = () => {
     const {id}= useParams();
 
-const {products,cart,setcart}=useContext(ProductComponents)
-
-
-const handleAddToWishlist =()=>{
-     const idInt = parseInt(id);
-    const product=products.find(product=>product.id == id)
-    console.log(product)
-    if(product){
-        console.log(idInt)
-        saveStoreData(idInt)
-        setcart((previousCart) => [...previousCart,idInt])
-    }
-}
-
-
+const {products,handleAddToWishlist}=useContext(ProductComponents)
 
 const product=products.find(product=>product.id === parseInt(id))
 if (!product) {
@@ -50,7 +36,7 @@ if (!product) {
 							</div>
                             
 						</div>
-                        <button onClick={handleAddToWishlist} className="p-4 bg-red-300 rounded-md">add to cart</button>
+                        <button onClick={()=>handleAddToWishlist(product.id)} className="p-4 bg-red-300 rounded-md">add to cart</button>
 						
 					</div>
 				</div>

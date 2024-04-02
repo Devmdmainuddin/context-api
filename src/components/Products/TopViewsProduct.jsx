@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 const TopViewsProduct = ({product}) => {
-    const {title,description,thumbnail,rating}=product;
+    const {title,description,thumbnail,rating,id}=product;
     return (
-        <article className="flex flex-col bg-gray-50">
+        <Link to={`/products/${id}`} className="flex flex-col bg-gray-50">
         <a rel="noopener noreferrer" href="#" aria-label="Te nulla oportere reprimique his dolorum">
             <img alt="" className="object-cover w-full h-52 dark:bg-gray-500" src={thumbnail} />
         </a>
@@ -16,7 +16,7 @@ const TopViewsProduct = ({product}) => {
                 <span>2.1K views</span>
             </div>
         </div>
-    </article>
+    </Link>
     );
 };
 TopViewsProduct.propTypes ={

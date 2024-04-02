@@ -1,47 +1,17 @@
 import SingleCart from "./SingleCart";
-import { useContext, useEffect, useState } from "react";
-import { getStoreData,removeFromDb } from "../../DataBase/FakeDataBase";
+import { useContext} from "react";
+
 import { ProductComponents } from "../../Contaxt/ContextComponent";
 import { useNavigate } from "react-router-dom";
 
 const Carts = () => {
-	const { products } = useContext(ProductComponents);
+	const { items,totalPrice } = useContext(ProductComponents);
 
 	const navigate = useNavigate();
     const handlegoback=()=>{
         navigate(-1)
     }
-	const [selecitems,setselecitem]=useState([])
-	const [items, setItems] = useState([]);
-	const price = items.reduce((p,c)=>p+c.price,0)
-	useEffect(() => {
-
-		const storedata = getStoreData();
-		if (products.length > 0) {
-			const storeItems = []
-			console.log(storeItems)
-			for (const id of storedata) {
-				const product = products.find(product =>
-					product.id == id);
-				if (product) {
-					storeItems.push(product)
-				}
-			}
-			setItems(storeItems);
-
-		}
-	}, [products])
-	
-const removeFromCart = (itemId) => {
-
-    const remaining = items.filter(item => item.id != itemId);
-	setItems(remaining)
-	removeFromDb(itemId)
-
-  };
-
-
-
+	// const price = items.reduce((p,c)=>p+c.price,0)
 
 	return (
 		<div className="flex flex-col mx-auto mt-6 max-w-5xl p-6 space-y-4 sm:p-10 bg-gray-900 text-gray-100">
@@ -49,13 +19,13 @@ const removeFromCart = (itemId) => {
 			<ul className="flex flex-col divide-y divide-gray-700">
 
 				{
-					items.map((product, idx) => <SingleCart key={idx} product={product} removeFromCart={removeFromCart}></SingleCart>)
+					items.map((product, idx) => <SingleCart key={idx} product={product}></SingleCart>)
 				}
 
 			</ul>
 			<div className="space-y-1 text-right">
 				<p>Total amount:
-					<span className="font-semibold">{price} €</span>
+					<span className="font-semibold">{totalPrice} €</span>
 				</p>
 				<p className="text-sm text-gray-400">Not including taxes and shipping costs</p>
 			</div>

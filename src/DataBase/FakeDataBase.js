@@ -26,7 +26,7 @@ const saveStoreData = id => {
 }
 
 const removeFromDb = id => {
-
+    
     const storedDatas = getStoreData();
     const exists = storedDatas.filter(Pid => Pid != id);
      localStorage.setItem('storProduct', JSON.stringify(exists))

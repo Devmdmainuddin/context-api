@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-const SingleCart = ({product,removeFromCart}) => {
+import { useContext } from 'react';
+import { ProductComponents } from '../../Contaxt/ContextComponent';
+const SingleCart = ({product}) => {
     const {thumbnail,category,title,price,stock,description,id}=product;
 
-    
+    const {removeFromCart} =useContext(ProductComponents)
 
     return (
         <li className="flex flex-col py-6 sm:flex-row sm:justify-between">
